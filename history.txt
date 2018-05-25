@@ -1,0 +1,5 @@
+- git clone https://github.com/xxxx
+- cd [directory]
+- mvn appengine:run
+- gcloud config set project [projectID]
+- mvn appengine:deploy
