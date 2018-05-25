@@ -16,6 +16,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.google.cloud.tools.appengine'
+apply plugin: 'war'
 
 jar {
 	baseName = 'autocomplete'
@@ -48,8 +49,15 @@ repositories {
 
 
 dependencies {
+    compileOnly ('javax.servlet:javax.servlet-api:3.1.0')
+
 	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-devtools')
+
 	compile('com.google.cloud:google-cloud-datastore:1.27.0')
-	compile('com.google.appengine:appengine-api-1.0-sdk:+')
+	compile('com.google.api-client:google-api-client-appengine:+')
+
+    providedRuntime ('org.springframework.boot:spring-boot-starter-tomcat')
+    providedRuntime ('org.springframework.boot:spring-boot-starter-jetty')
 }
 
