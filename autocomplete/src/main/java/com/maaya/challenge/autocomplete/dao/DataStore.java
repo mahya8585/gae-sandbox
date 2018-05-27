@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataStore {
-    
+
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
 
     public List<String> createCandidates(String kind) {

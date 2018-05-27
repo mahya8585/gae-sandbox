@@ -1,5 +1,8 @@
 - git clone https://github.com/xxxx
 - cd [directory]
-- mvn appengine:run
-- gcloud config set project [projectID]
+
+- mvn spring-boot:run
+- mvn appengine:run -X
+- gcloud config set project [projectId]
+- gcloud app create --region asia-northeast1
 - mvn appengine:deploy
