@@ -1,0 +1,10 @@
+suggest/.gradle
+suggest/build/
+!suggest/gradle/wrapper/gradle-wrapper.jar
+suggest/target/
+
+suggest/.idea/
+suggest/*.iml
+
+function/.idea/
+function/*.iml
