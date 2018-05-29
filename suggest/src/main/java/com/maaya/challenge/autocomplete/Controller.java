@@ -13,8 +13,9 @@ public class Controller {
     public List<String> createSuggest(@RequestParam String kind) {
 
         DataStore dataStore = new DataStore();
+        List<String> source = dataStore.createCandidates(kind);
 
-        return dataStore.createCandidates(kind);
+        return new Shape().splitName(source);
     }
 
 }
