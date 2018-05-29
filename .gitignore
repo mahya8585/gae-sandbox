@@ -8,3 +8,6 @@ suggest/*.iml
 
 function/.idea/
 function/*.iml
+
+dataflow/first-dataflow/dataflow-intro/.idea
+dataflow/first-dataflow/dataflow-intro/*.iml
