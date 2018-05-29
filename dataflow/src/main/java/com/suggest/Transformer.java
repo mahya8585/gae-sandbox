@@ -6,11 +6,12 @@ import org.apache.beam.sdk.transforms.ParDo;
 import org.apache.beam.sdk.values.KV;
 import org.apache.beam.sdk.values.PCollection;
 
+import java.util.List;
 
 
-public class Transformer extends PTransform<PCollection<KV<String, String>>, PCollection<Entity>> {
+public class Transformer extends PTransform<PCollection<KV<String, List<String>>>, PCollection<Entity>> {
     @Override
-    public PCollection<Entity> expand(PCollection<KV<String, String>> suggest) {
+    public PCollection<Entity> expand(PCollection<KV<String, List<String>>> suggest) {
 
         PCollection<Entity> insertData = suggest.apply(ParDo.of(new TransformerFn()));
 

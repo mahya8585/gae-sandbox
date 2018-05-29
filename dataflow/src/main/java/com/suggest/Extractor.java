@@ -18,14 +18,27 @@ public class Extractor extends DoFn<String, String> {
             emptyLines.inc();
         }
 
-        String jobj;
-        String startRegex = "[";
-        String endRegex = "]";
-        if (line.startsWith(startRegex)) {
-            jobj = line.replaceFirst(startRegex, "");
+        String jsonObj = createJsonRecord(line);
 
-        } else if (line.endsWith(endRegex)) {
-            int last = line.lastIndexOf(endRegex);
+        // 名前取得
+        Gson gson = new Gson();
+        Product product = gson.fromJson(jsonObj.trim(), Product.class);
+
+        //output　index,name
+//        System.out.println(product.getName());
+        c.output(product.getName());
+
+    }
+
+    String createJsonRecord(String line) {
+        String jobj;
+        String endChar = "]";
+
+        if (line.startsWith("[")) {
+            jobj = line.replaceFirst("\\[", "");
+
+        } else if (line.endsWith(endChar)) {
+            int last = line.lastIndexOf(endChar);
             jobj = line.substring(0, last);
 
         } else {
@@ -34,20 +47,14 @@ public class Extractor extends DoFn<String, String> {
 
         String jsonObj;
         String sepalator = ",";
-        if (jobj.endsWith(sepalator)){
+        if (jobj.endsWith(sepalator)) {
             int last = jobj.lastIndexOf(sepalator);
-            jsonObj = jobj.substring(0,last);
+            jsonObj = jobj.substring(0, last);
 
         } else {
             jsonObj = jobj;
         }
 
-        // 名前取得
-        Gson gson = new Gson();
-        Product product = gson.fromJson(jsonObj, Product.class);
-
-        //output　index,name
-        c.output(product.getName());
-
+        return jsonObj;
     }
 }

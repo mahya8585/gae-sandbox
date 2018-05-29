@@ -11,7 +11,7 @@ public interface Options extends PipelineOptions {
      * King Lear. Set this option to choose a different input file or glob.
      */
     @Description("Path of the file to read from")
-    @Default.String("gs://suggest-products/dummy.json")
+    @Default.String("gs://suggest-products/products1.json")
     String getInputFile();
     void setInputFile(String value);
 

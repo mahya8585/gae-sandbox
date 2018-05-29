@@ -8,9 +8,11 @@ public class IndexCreator extends DoFn<String, KV<String, String>> {
     @ProcessElement
     public void processElement(ProcessContext c) {
         String name = c.element();
+        if (name != null) {
 
-        for(int charCount = 1; charCount <= name.length(); charCount++){
-            c.output(KV.of(name.substring(0,charCount), c.element()));
+            for (int charCount = 1; charCount <= name.length(); charCount++) {
+                c.output(KV.of(name.substring(0, charCount), c.element()));
+            }
         }
 
     }
