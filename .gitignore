@@ -1,3 +1,5 @@
+.idea/
+
 suggest/.gradle
 suggest/build/
 !suggest/gradle/wrapper/gradle-wrapper.jar
